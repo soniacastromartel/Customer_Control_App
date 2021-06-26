@@ -1,21 +1,24 @@
 package mx.com.gm;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
  * @author Sonia Castro (soniacastromartel@gmail.com)
  */
-@RestController
+@Controller
 @Slf4j
 public class ControladorInicio {
     
     @GetMapping("/")
-    public String inicio(){
+    public String inicio(Model model){
 	log.info("Ejecutando..");
-	return"Hola Mundo Spring";
+	String mensaje= "Hola Mundo";
+	model.addAttribute("mensaje", mensaje);
+	return"index";
     }
     
 }
