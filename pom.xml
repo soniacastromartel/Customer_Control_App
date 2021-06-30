@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>mx.com.gm</groupId>
-    <artifactId>HolaMundoThymeleaf</artifactId>
+    <artifactId>ControlClientes</artifactId>
     <version>1.0</version>
-    <name>HolaMundoThymeleaf</name>
+    <name>ControlClientes</name>
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>8</java.version>
