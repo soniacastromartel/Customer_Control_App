@@ -17,34 +17,41 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 @Slf4j
 public class ControladorInicio {
-    
- @Autowired //inyectamos la interface PersonaDAO
- private PersonaService personaService;
-    
+
+    @Autowired //inyectamos la interface PersonaDAO
+    private PersonaService personaService;
+
     @GetMapping("/")
-    public String inicio(Model model){
-	List personas= (List) personaService.listarPersonas();
-	
+    public String inicio(Model model) {
+	List personas = (List) personaService.listarPersonas();
+
 	log.info("Ejecutando..");
 	model.addAttribute("personas", personas);
-	return"index";
+	return "index";
     }
+
     @GetMapping("/agregar")
-    public  String agregar(Persona persona){
+    public String agregar(Persona persona) {
 	return "modificar";
     }
+
     @PostMapping("/guardar")
-    public String guardar(Persona persona){
+    public String guardar(Persona persona) {
 	personaService.guardar(persona);
 	return "redirect:/";
     }
-    
+
     @GetMapping("/editar/{idPersona}")
-    public String editar(Persona persona, Model model){
-	persona= personaService.encontrarPersona(persona);
+    public String editar(Persona persona, Model model) {
+	persona = personaService.encontrarPersona(persona);
 	model.addAttribute("persona", persona);
-	return  "modificar";
+	return "modificar";
     }
-    
-    
+
+    @GetMapping("/eliminar")
+    public String eliminar(Persona persona) {
+	personaService.eliminar(persona);
+	return "redirect:/";
+    }
+
 }
