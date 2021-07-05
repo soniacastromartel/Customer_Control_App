@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        <h1>Inicio</h1>
+        <header th:replace="layout/plantilla :: header"/>
         <a th:href="@{/agregar}">Agregar persona</a>
         <div th:if="${personas !=null and !personas.empty}">
             <table border="1">
@@ -28,6 +28,6 @@
             </table>
         </div>
         <div th:if="${personas ==null or personas.empty}">la lista esta vacia</div>
-
+  <footer th:replace="layout/plantilla :: footer"/>
     </body>
 </html>
