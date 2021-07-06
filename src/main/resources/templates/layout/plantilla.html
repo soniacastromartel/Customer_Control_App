@@ -11,7 +11,14 @@
         </header>
         
         <footer th:fragment="footer">
-            <p>[[#{plantilla.pie-pagina}]] <a href="http://www.globalmentoring.como.mx" target="_blank">Global Mentoring</p>
+            <div>
+                <br/>
+                <a th:href="@{/(lang=es)}">ES</a> |
+                <a th:href="@{/(lang=eN)}">EN</a> |
+            
+            <span>[[#{plantilla.pie-pagina}]] <a href="http://www.globalmentoring.como.mx" target="_blank">Global Mentoring</span>
+            </div>
+            
         </footer>
     </body>
 </html>
