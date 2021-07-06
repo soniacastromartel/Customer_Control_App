@@ -22,8 +22,8 @@
                     <td th:text="${persona.apellido}">Mostrar Apellido</td>
                     <td th:text="${persona.email}">Mostrar Email</td>
                     <td th:text="${persona.telefono}">Mostrar Telefono</td>
-                    <td><a th:href="@{/editar/} + ${persona.idPersona}"></a>[[#{accion.editar}]]</td>
-                    <td><a th:href="@{/eliminar(idPersona=${persona.idPersona})}"></a>[[#{accion.eliminar}]]</td>
+                    <td><a th:href="@{/editar/} + ${persona.idPersona}"/>[[#{accion.editar}]]</td>
+                    <td><a th:href="@{/eliminar(idPersona=${persona.idPersona})}"/>[[#{accion.eliminar}]]</td>
                 </tr>
             </table>
         </div>
