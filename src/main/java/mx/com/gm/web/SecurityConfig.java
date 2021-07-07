@@ -15,13 +15,17 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
+    //RESTRINGIR URLS- AUTORIZACION
     protected void configure(HttpSecurity http) throws Exception {
-	super.configure(http); //To change body of generated methods, choose Tools | Templates.
+	http.authorizeRequests().antMatchers("/editar/**","/agregar/**", "/eliminar").hasRole("ADMIN").antMatchers("/").hasAnyRole("USER", "ADMIN").and().formLogin().loginPage("/login").and().exceptionHandling().accessDeniedPage("/errores/403");
     }
 
     @Override
+    //CONFIGURAR ROLES- AUTENTICACION
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 	auth.inMemoryAuthentication().withUser("admin").password("{noop}123").roles("ADMIN", "USER").and().withUser("user").password("{noop}123").roles("USER");
     }
+    
+    
 
 }
