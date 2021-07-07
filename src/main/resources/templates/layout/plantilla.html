@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head>
         <title>Plantilla</title>
         <meta charset="UTF-8"/>
@@ -18,7 +19,10 @@
             
             <span>[[#{plantilla.pie-pagina}]] <a href="http://www.globalmentoring.como.mx" target="_blank">Global Mentoring</span>
             
-            <form method="POST" th:action="@{/logout}"> <a href="#" onclick="this.parentNode.submit();">Logout</a>
+            <form method="POST" th:action="@{/logout}">
+                <b>User:</b> <span sec:authentication="name">Usuario que hizo login</span> |
+                <b>Roles: </b> <span sec:authentication="principal.authorities">Roles</span> |
+                <a href="#" onclick="this.parentNode.submit();">Logout</a>
                 
             </form>
             </div>
