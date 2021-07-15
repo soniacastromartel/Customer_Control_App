@@ -2,13 +2,21 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">  
-     
+
     <head th:replace="layout/plantilla :: head">
         <title>INICIO</title>
         <meta charset="UTF-8">
     </head>
     <body>
+
         <header th:replace="layout/plantilla :: header"/>
+        <section th:replace="layout/botonesAgregar :: botonesAgregar"/>
+       <!-- <section th:replace="layout/agregarCliente :: agregarCliente"/>
+        <section th:replace="layout/listadoClientes :: listadoClientes"/> -->
+
+        <footer th:replace="layout/plantilla :: footer"/>
+
+
         <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/agregar}">[[#{persona.crear}]]</a>
         <div th:if="${personas !=null and !personas.empty}">
             <table border="1">
@@ -31,6 +39,5 @@
             </table>
         </div>
         <div th:if="${personas ==null or personas.empty}">[[#{persona.lista-vacia}]]</div>
-  <footer th:replace="layout/plantilla :: footer"/>
     </body>
 </html>
