@@ -28,12 +28,21 @@ public class ControladorInicio {
 
     @GetMapping("/")
     public String inicio(Model model, @AuthenticationPrincipal User user) {
-	List personas = (List) personaService.listarPersonas();
+	List<Persona> personas =  personaService.listarPersonas();
 	log.info("Usuario que hizo login: "+user);
 	 System.out.println("version: " + SpringVersion.getVersion());
 
 	log.info("Ejecutando..");
 	model.addAttribute("personas", personas);
+	Double saldoTotal= 0D;
+	
+	for (Persona persona : personas) {
+	    saldoTotal+=persona.getSaldo();
+	}
+	
+	model.addAttribute("saldoTotal", saldoTotal);
+	model.addAttribute("totalClientes", personas.size());
+	
 	return "index";
     }
 
