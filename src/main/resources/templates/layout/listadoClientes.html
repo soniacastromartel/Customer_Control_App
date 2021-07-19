@@ -32,13 +32,21 @@
                                             <td>[[${persona.nombre} + ' ' + ${persona.apellido}]]</td>
                                             <td>[[${new java.text.DecimalFormat('$#,##0.00').format(persona.saldo)}]]</td>
                                             <td>
-                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:hrefe="@{/editar/} + ${persona.idPersona}" class="btn btn-secondary">
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editar/} + ${persona.idPersona}" class="btn btn-secondary">
                                                     <i class="fas fa-angle-double-right"></i> [[#{accion.editar}]]
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/eliminar (idPersona= ${persona.idPersona})} " class="btn btn-dark">
+                                                    <i class="fas fa-angle-double-right"></i> [[#{accion.eliminar}]]
                                                 </a>
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
+                            </div>
+                            <div class="text-center p-2" th:if="${personas == null or personas.empty}">
+                                <span th:text="#{persona.lista-vacia}">Lista vacía</span>
                             </div>
                         </div>
                     </div>
